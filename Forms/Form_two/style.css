@@ -37,27 +37,47 @@ textarea{
 form{
  display: grid;
  gap: 1rem;
- 
+
  @media (min-width: 720px) {
     grid-template-columns: 1fr 1fr;
  }
 }
 .form-group{
       display: grid;
+      gap: 0.25lh;/*line height between text*/
 }
 label{
    text-transform: uppercase;
    font-size: 1rem;
+   text-box-trim: trim-both;
+   text-box-edge: cap alphabetic;/*it lined up exactly with the bottom input*/
+
 }
+
 input{
     border-radius: var(--border-radius);
     border-color: var(--border-color);
     padding: 1ex 2ex;
-    width: 100%;
+    accent-color: var(--button-background-color);/*check box color {accent for radio,checkbox,range..etc not text}*/
+    /* width: 100%; */
+    /*all input will take 100% width and cause checkbox so will add for all width but not for checkbox*/
 }
+
+/* input[type="text"],
+input[type="password"],
+input[type="tel"]{
+
+} Instead*/
+
+ input:not([type="checkbox"]){
+    width: 100%;
+  
+ }
 .form-group:has(.fine-print){
     grid-column: 1/-1;
-    background-color: rebeccapurple;
+    /* background-color: rebeccapurple; */
+    display: flex;
+    gap: 1ch; /*1 character gap between checkbox and text*/
 }
 .fine-print{
     text-transform: lowercase;
@@ -69,5 +89,5 @@ button{
     border-radius: var(--border-radius);
     border-color: var(--border-color);
     cursor: pointer;
-    justify-self: start;
+    justify-self: start;      
 }
